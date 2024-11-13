@@ -1,5 +1,8 @@
 ## Tools
 
+## video demo
+![](doc/video_top.gif)
+
 ### glview
 
 The program given with libfreenect as a reference
