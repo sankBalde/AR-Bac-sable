@@ -1,0 +1,2 @@
+/usr/bin/ar qc libopencv_kinect.a "CMakeFiles/opencv_kinect.dir/src/capture-cv.cpp.o" CMakeFiles/opencv_kinect.dir/src/utils.cpp.o "CMakeFiles/opencv_kinect.dir/src/calibration-utils.cpp.o"
+/usr/bin/ranlib libopencv_kinect.a

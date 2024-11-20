@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/glview.dir/src/glview.c.o -o glview   -L/home/bacasable/libfreenect/build/lib  -Wl,-rpath,/home/bacasable/libfreenect/build/lib -lm /home/bacasable/libfreenect/build/lib/libfreenect.so /usr/lib/x86_64-linux-gnu/libglut.so /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so 

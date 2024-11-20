@@ -29,7 +29,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include <libfreenect/libfreenect.h>
+#include <libfreenect.h>
 
 #ifdef _MSC_VER
 #define HAVE_STRUCT_TIMESPEC

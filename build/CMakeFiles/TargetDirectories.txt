@@ -1,0 +1,6 @@
+/home/bacasable/AR-Bac-sable/build/CMakeFiles/glview.dir
+/home/bacasable/AR-Bac-sable/build/CMakeFiles/test-cv.dir
+/home/bacasable/AR-Bac-sable/build/CMakeFiles/opencv_kinect.dir
+/home/bacasable/AR-Bac-sable/build/CMakeFiles/calibration.dir
+/home/bacasable/AR-Bac-sable/build/CMakeFiles/edit_cache.dir
+/home/bacasable/AR-Bac-sable/build/CMakeFiles/rebuild_cache.dir

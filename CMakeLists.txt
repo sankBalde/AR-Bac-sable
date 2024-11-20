@@ -13,8 +13,8 @@ find_package(OpenCV REQUIRED COMPONENTS core highgui imgproc calib3d imgcodecs)
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 
 # MAC OS ONLY: Manually specify the location of libfreenect (since pkg-config is not available) MACOS ONLY
-set(FREENECT_INCLUDE_DIR /opt/homebrew/opt/libfreenect/include)
-set(FREENECT_LIB_DIR /opt/homebrew/opt/libfreenect/lib)
+set(FREENECT_INCLUDE_DIR /home/bacasable/libfreenect/include)
+set(FREENECT_LIB_DIR /home/bacasable/libfreenect/build/lib)
 
 # Add the include directory for libfreenect
 include_directories(${FREENECT_INCLUDE_DIR})
@@ -26,7 +26,7 @@ link_directories(${FREENECT_LIB_DIR})
 add_executable(glview src/glview.c)
 
 # Link libraries for glview
-target_link_libraries(glview PRIVATE ${FREENECT_LIB_DIR}/libfreenect.dylib GLUT::GLUT OpenGL::GL)
+target_link_libraries(glview PRIVATE -lm ${FREENECT_LIB_DIR}/libfreenect.so GLUT::GLUT OpenGL::GL)
 
 # Add the executable for test-cv
 add_executable(test-cv src/test-cv.cpp)
@@ -35,7 +35,7 @@ add_executable(test-cv src/test-cv.cpp)
 add_library(opencv_kinect src/capture-cv.hpp src/capture-cv.cpp src/utils.cpp src/calibration-utils.hpp src/calibration-utils.cpp)
 
 # Link libraries for opencv_kinect
-target_link_libraries(opencv_kinect PRIVATE opencv_imgproc opencv_calib3d ${FREENECT_LIB_DIR}/libfreenect.dylib Qt6::Core)
+target_link_libraries(opencv_kinect PRIVATE opencv_imgproc opencv_calib3d ${FREENECT_LIB_DIR}/libfreenect.so Qt6::Core)
 target_link_libraries(opencv_kinect PUBLIC opencv_core opencv_imgcodecs)
 
 # Link libraries for test-cv
