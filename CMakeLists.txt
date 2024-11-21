@@ -16,6 +16,8 @@ find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 set(FREENECT_INCLUDE_DIR /home/bacasable/libfreenect/include)
 set(FREENECT_LIB_DIR /home/bacasable/libfreenect/build/lib)
 
+add_compile_options(-g)
+
 # Add the include directory for libfreenect
 include_directories(${FREENECT_INCLUDE_DIR})
 

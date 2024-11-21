@@ -455,12 +455,13 @@ QCalibrationApp::QCalibrationApp(QWidget* parent) : QMainWindow(parent)
     m_impl->capture.start();
 
     // Display the calibration image on the second screen
-    auto calibration_image = get_calibration_image(640, 480);
+    auto calibration_image = get_calibration_image(1000, 600);
     m_impl->m_calibration_view = new QFullscreenView(&calibration_image, this);
     m_impl->m_calibration_view->move(QGuiApplication::screens().last()->geometry().topLeft());
     m_impl->m_calibration_view->hide();
 
-    m_impl->m_output_view = new QFullscreenView(nullptr, this);
+    auto output_image = get_calibration_image(1000, 600);
+    m_impl->m_output_view = new QFullscreenView(&output_image, this);
     m_impl->m_output_view->move(QGuiApplication::screens().last()->geometry().topLeft());
     m_impl->m_output_view->show();
 }

@@ -315,8 +315,14 @@ CMakeFiles/test-cv.dir/src/test-cv.cpp.o: /home/bacasable/AR-Bac-sable/src/test-
   /usr/include/opencv4/opencv2/imgcodecs.hpp \
   /usr/include/opencv4/opencv2/videoio.hpp \
   /home/bacasable/AR-Bac-sable/src/capture-cv.hpp \
-  /home/bacasable/AR-Bac-sable/src/utils.hpp
+  /home/bacasable/AR-Bac-sable/src/utils.hpp \
+  /usr/include/opencv4/opencv2/imgproc.hpp \
+  /usr/include/opencv4/opencv2/imgproc/segmentation.hpp
 
+
+/usr/include/opencv4/opencv2/imgproc/segmentation.hpp:
+
+/usr/include/opencv4/opencv2/imgproc.hpp:
 
 /home/bacasable/AR-Bac-sable/src/utils.hpp:
 

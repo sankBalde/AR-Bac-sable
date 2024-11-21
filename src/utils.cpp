@@ -41,26 +41,26 @@ std::vector<rgb8> get_cmap(float gamma) {
 
 // Génère la couleur en fonction de la hauteur normalisée
 cv::Vec3b get_colormap_color(float height) {
-    if (height <= -220.0f) return cv::Vec3b(0, 0, 0);           // Noir
-    else if (height <= -200.0f) return cv::Vec3b(80, 0, 0);     // Rouge foncé
-    else if (height <= -170.0f) return cv::Vec3b(100, 30, 0);   // Marron foncé
+    if (height <= -220.0f) return cv::Vec3b(80, 0, 0);           // Noir
+    //else if (height <= -200.0f) return cv::Vec3b(80, 0, 0);     // Rouge foncé
+    else if (height <= -200.0f) return cv::Vec3b(80, 0, 0);   // Marron foncé
     else if (height <= -150.0f) return cv::Vec3b(102, 50, 0);   // Marron
     else if (height <= -125.0f) return cv::Vec3b(160, 108, 19); // Ocre foncé
-    else if (height <= -7.5f) return cv::Vec3b(205, 140, 24);   // Ocre clair
-    else if (height <= -2.5f) return cv::Vec3b(250, 206, 135);  // Beige clair
-    else if (height <= -0.5f) return cv::Vec3b(255, 226, 176);  // Sable
-    else if (height <= 0.0f) return cv::Vec3b(71, 97, 0);       // Vert foncé
+    else if (height <= -100.5f) return cv::Vec3b(205, 140, 24);   // Ocre clair
+    else if (height <= -90.5f) return cv::Vec3b(250, 206, 135);  // Beige clair
+    else if (height <= -88.5f) return cv::Vec3b(255, 226, 176);  // Sable
+    else if (height <= -80.0f) return cv::Vec3b(71, 97, 0);       // Vert foncé
     else if (height <= 5.0f) return cv::Vec3b(47, 122, 16);     // Vert herbe foncé
     else if (height <= 15.0f) return cv::Vec3b(60, 180, 40);    // Vert vif
     else if (height <= 25.0f) return cv::Vec3b(90, 220, 80);    // Vert clair
     else if (height <= 30.0f) return cv::Vec3b(240, 240, 60);   // Jaune clair
     else if (height <= 35.0f) return cv::Vec3b(255, 255, 160);  // Jaune sable
     else if (height <= 40.0f) return cv::Vec3b(255, 255, 255);  // Blanc
-    else if (height <= 60.0f) return cv::Vec3b(0, 67, 161);     // Bleu profond
-    else if (height <= 90.0f) return cv::Vec3b(30, 30, 130);    // Bleu foncé
-    else if (height <= 140.0f) return cv::Vec3b(161, 161, 161); // Gris moyen
-    else if (height <= 200.0f) return cv::Vec3b(206, 206, 206); // Gris clair
-    else return cv::Vec3b(255, 255, 255);                       // Blanc
+    else if (height <= 170.0f) return cv::Vec3b(0, 67, 161);     // Bleu profond
+    else if (height <= 200.0f) return cv::Vec3b(30, 30, 130);    // Bleu foncé
+    //else if (height <= 140.0f) return cv::Vec3b(161, 161, 161); // Gris moyen
+    //else if (height <= 200.0f) return cv::Vec3b(206, 206, 206); // Gris clair
+    else return cv::Vec3b(0, 0, 0); //cv::Vec3b(255, 255, 255);                       // Blanc
 }
 
 
@@ -101,7 +101,7 @@ void add_contour_lines(cv::Mat& depth_img, const std::vector<uint16_t>& depth_ve
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
             if (edges.at<uint8_t>(y, x) > 0) {
-                depth_img.at<cv::Vec3b>(y, x) = cv::Vec3b(10, 10, 10); // Noir
+                depth_img.at<cv::Vec3b>(y, x) = cv::Vec3b(0, 0, 0); // Noir
             }
         }
     }
@@ -201,12 +201,13 @@ uint8_t* process_depth(std::vector<uint16_t> depth_vector, int width, int height
     cv::Mat depth_img = generate_colored_depth(depth_vector, width, height, min_depth, max_depth);
 
     // Ajout des effets
-    add_contour_lines(depth_img, depth_vector, width, height, 100); // Lignes de niveau tous les 10 unités
+    add_contour_lines(depth_img, depth_vector, width, height, 25); // Lignes de niveau tous les 10 unités
     cv::Mat depth_map(height, width, CV_16UC1, depth_vector.data());
     add_shading(depth_img, depth_map);
 
     // Conversion en tableau d'octets
     uint8_t* res = new uint8_t[depth_img.total() * depth_img.elemSize()];
     std::memcpy(res, depth_img.data, depth_img.total() * depth_img.elemSize());
+    depth_img.release();
     return res;
 }

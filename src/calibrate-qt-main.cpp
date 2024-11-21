@@ -16,6 +16,7 @@ cv::Mat depthmap_colorize(cv::Mat _depth, int min_depth, int max_depth)
     cv::Mat depth_rgb2 = uint8ArrayToMat(final_img, depth16.rows, depth16.cols, CV_8UC3);
     cv::Mat rgbImage;
     cv::cvtColor(depth_rgb2, rgbImage, cv::COLOR_BGR2RGB);
+    delete[] final_img;
     return depth_rgb2;
 }
 
